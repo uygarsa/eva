@@ -102,7 +102,7 @@
                         @endforeach
                     </div>
                     @foreach ($locales as $locale)
-                    @php $lKey = false; if($category['translations'] != null) { $lKey = array_search($locale, array_column($category['translations'], 'locale')); } @endphp
+                    @php $lKey = false; if (isset($category)){if($category['translations'] != null) { $lKey = array_search($locale, array_column($category['translations'], 'locale')); }} @endphp
                     <input type="hidden" name="translation_order[]" value="{{$locale}}">
                     <div class="locale-container locale-container-{{$locale}}" @if ($currentLocale == $locale) style="display:block;" @endif>
                          <div class="md-form form-sm">
@@ -126,7 +126,7 @@
                     </div>
                     <div class="md-form form-sm">
                         <i class="fa fa-sort prefix"></i>
-                        <input type="text" id="category_position" name="position" value="{{isset($category['category']->position) ? $category['category']->position : '0'}}" class="form-control">
+                        <input type="text" id="category_position" name="position" value="{{isset($category)?(isset($category['category']->position) ? $category['category']->position : '0'):'0'}}" class="form-control">
                         <label for="category_position">{{__('admin_pages.category_position')}}</label>
                     </div>
                     <div class="text-center mt-1-half">

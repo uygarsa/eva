@@ -25,6 +25,7 @@ class PublishController extends Controller
             }
         }
         $allCategories = $categoriesModel->getAllCategories();
+       
         return view('admin.publish', [
             'page_title_lang' => Lang::get('admin_pages.publish'),
             'locales' => Config::get('app.locales'),
